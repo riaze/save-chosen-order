@@ -1,0 +1,16 @@
+drupal.chosen_order:
+  remote: https://drupal.org/project/chosen_order
+
+  version: 1.0.0
+  license:
+    name: GNU GPL v3
+    url: https://www.drupal.org/about/licensing
+    gpl-compatible: true
+  js:
+    js/save_chosen_order.js: {}
+  css:
+    component:
+      css/save_chosen_order.css: {}
+  dependencies:
+    - core/jquery
+    - core/sortable

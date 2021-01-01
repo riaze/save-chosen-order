@@ -1,0 +1,7 @@
+name: Save chose order
+type: module
+description: Reorder selections in multiple select fields with chosen enabled.
+package: User interface
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - chosen
