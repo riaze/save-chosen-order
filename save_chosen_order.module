@@ -8,7 +8,7 @@ use Drupal\Core\Render\Element;
  * Implements hook_form_alter().
 */
 
-function chosen_order_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function save_chosen_order_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   //|    Add some js to make multi-select chosen field sortable
   //|    Add a hidden field to store the sort order
   if (!empty($form_state->getValue('#chosen_order') && !$form_state->getValue('submitted'))) {
@@ -36,18 +36,18 @@ function chosen_order_form_alter(&$form, FormStateInterface $form_state, $form_i
 /**
  * Implements hook_field_widget_form_alter().
  */
-function chosen_order_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+function save_chosen_order_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
 
   if (!empty($element['#chosen']) && $element['#multiple']) {
     //|  Add sort js to all chosen multiple select widgets
-    $element['#attached']['library'][] = 'chosen_order/drupal.chosen_order';
+    $element['#attached']['library'][] = 'save_chosen_order/drupal.chosen_order';
     //|  Add sort js to all chosen multiple select widgets
-    $element['#element_validate'][] =  'chosen_order_form_chosen_field_validate_order';
+    $element['#element_validate'][] =  'save_chosen_order_form_chosen_field_validate_order';
     $form_state->setValue('#chosen_order', TRUE);
   }
 }
 
-function chosen_order_form_chosen_field_validate_order($element, FormStateInterface $form_state, $form) {
+function save_chosen_order_form_chosen_field_validate_order($element, FormStateInterface $form_state, $form) {
   $el_name = $element['#field_name'];
   $order_field_name = $el_name . '_order';
 
